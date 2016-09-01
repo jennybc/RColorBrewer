@@ -29,6 +29,9 @@ brewer.pal<-function(n,name){
    if(!(name %in% namelist)){
    stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
+   if(missing(n)){
+   n <- maxcolors[which(name==namelist)]
+   }
    if(n<3){ 
    warning("minimal value for n is 3, returning requested palette with 3 different levels\n")
    return(brewer.pal(3,name))
@@ -909,6 +912,9 @@ display.brewer.pal<-function(n,name){
    if(!(name %in% namelist)){
    stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
+   if(missing(n)){
+   n <- maxcolors[which(name==namelist)]
+   }
    if(n<3){ 
    warning("minimal value for n is 3, displaying requested palette with 3 different levels\n")
    return(display.brewer.pal(3,name))
